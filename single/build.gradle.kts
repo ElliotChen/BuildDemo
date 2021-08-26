@@ -17,7 +17,7 @@ plugins {
 repositories {
     // Use jcenter for resolving dependencies.
     // You can declare any Maven/Ivy/file repository here.
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
@@ -33,7 +33,7 @@ dependencies {
 
 application {
     // Define the main class for the application
-    mainClassName = "tw.elliot.App"
+    mainClass.set("tw.elliot.App")
 }
 
 sourceSets {

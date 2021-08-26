@@ -3,10 +3,10 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     java
-    id("org.springframework.boot") version "2.4.0" apply false
-    id("io.spring.dependency-management") version "1.0.10.RELEASE"
-    kotlin("jvm") version "1.4.10" apply false
-    kotlin("plugin.spring") version "1.4.10" apply false
+    id("org.springframework.boot") version "2.5.4" apply false
+    id("io.spring.dependency-management") version "1.0.11.RELEASE"
+    kotlin("jvm") version "1.5.30" apply false
+    kotlin("plugin.spring") version "1.5.30" apply false
     jacoco
 }
 
@@ -33,7 +33,7 @@ subprojects {
     tasks.withType<KotlinCompile> {
         println("Configuring KotlinCompile  $name in project ${project.name}...")
         kotlinOptions {
-            jvmTarget = "14"
+            jvmTarget = "1.8"
             freeCompilerArgs = listOf("-Xjsr305=strict")
         }
     }

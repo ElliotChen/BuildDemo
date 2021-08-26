@@ -1,8 +1,8 @@
 import org.jetbrains.kotlin.utils.addToStdlib.constant
 
 plugins {
-    java
-    kotlin("jvm") version "1.4.10" apply false
+    `java`
+    kotlin("jvm") version "1.5.30" apply false
 }
 
 allprojects {
@@ -10,7 +10,7 @@ allprojects {
     version = "1.0"
 
     repositories {
-        jcenter()
+        mavenCentral()
     }
 }
 
