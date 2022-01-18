@@ -1,6 +1,6 @@
 plugins {
-    war
+	id("war")
 }
 dependencies {
-    implementation(project(":core"))
+	implementation(project(":core"))
 }

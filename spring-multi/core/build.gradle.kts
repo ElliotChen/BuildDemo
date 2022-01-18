@@ -1,7 +1,3 @@
-tasks.bootJar {
-	enabled = false
-}
-
-tasks.jar {
-	enabled = true
+dependencies {
+	implementation("com.google.guava:guava")
 }

@@ -4,10 +4,10 @@
 package tw.elliot.backend;
 
 public class App {
-    public String getGreeting() {
-        return "Hello world.";
-    }
+	public String getGreeting() {
+		return "Hello world.";
+	}
 
-    public static void main(String[] args) {
-    }
+	public static void main(String[] args) {
+	}
 }

@@ -4,10 +4,10 @@
 package tw.elliot.frontend;
 
 public class Library {
-    public boolean someLibraryMethod() {
-        return true;
-    }
+	public boolean someLibraryMethod() {
+		return true;
+	}
 
-    public static void main(String[] args) {
-    }
+	public static void main(String[] args) {
+	}
 }

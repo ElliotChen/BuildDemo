@@ -12,7 +12,6 @@
 2. ```core```為library project：使用```multi```做為parent project。
 3. ```frontend```為war project：使用```multi```做為parent project，並使用```core```做為library。
 
-
 ```
 ├── multi
 │   ├── core
@@ -155,7 +154,8 @@ gradle init
 
 跟Maven相同，將使用到相同的library記在此處
 
-而```allprojects```跟```subprojects```區塊的差異，在```allprojects```的設定對所有的project有效，包含multi自己本身，而```subprojects```則是對其他project有效
+而```allprojects```跟```subprojects```區塊的差異，在```allprojects```的設定對所有的project有效，包含multi自己本身，而```subprojects```
+則是對其他project有效
 
 ```
 allprojects {

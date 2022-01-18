@@ -5,7 +5,7 @@ package tw.elliot.backend;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class AppTest {
 	@Test

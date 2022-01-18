@@ -1,7 +1,9 @@
 # Gradle － (1) 從零開始
 
 ## 起因
-Build Tool我已經習慣用Maven了，在目前基本上沒有特別想換的念頭，大部份的需求都是符合的，沒有不足或不方便到一定要找其他解決方案，但是因為愈來愈多的Open Source，甚至Android都只用Gradle，在有點被半強迫下開始用Gradle。
+
+Build Tool我已經習慣用Maven了，在目前基本上沒有特別想換的念頭，大部份的需求都是符合的，沒有不足或不方便到一定要找其他解決方案，但是因為愈來愈多的Open
+Source，甚至Android都只用Gradle，在有點被半強迫下開始用Gradle。
 
 我會試著用Maven的角度來介紹Gradle，最後也會試著比較相同功能，兩種不同的寫法。
 
@@ -57,7 +59,8 @@ OS:           Mac OS X 10.15.3 x86_64
 
 ## 二、建立基本Java Project
 
-執行**```gradle init --type java-application --dsl kotlin```**，可以產生基本的Java Project，可以把**```gradle init --type ＊＊＊```**當作是**```mvn archetype:generate```**，```--type```後面的參數可使用不同類型的範本名稱。
+執行**```gradle init --type java-application --dsl kotlin```**，可以產生基本的Java Project，可以把**```gradle init --type ＊＊＊```**
+當作是**```mvn archetype:generate```**，```--type```後面的參數可使用不同類型的範本名稱。
 
 ```cmd
 $ gradle init --type java-application --dsl kotlin
@@ -76,9 +79,10 @@ drwxr-xr-x   3 elliot  staff    96 Sep 12 08:20 gradle
 drwxr-xr-x   4 elliot  staff   128 Sep 12 08:21 src
 ```
 
-重點放在**```build.gradle.kts```**及**```settings.gradle.kts```**上面，Gradle會參照**```build.gradle.kts```**裡的描述來建構專案，而會將**```settings.gradle.kts```**裡的設定引入**```build.gradle.kts```**之中。
+重點放在**```build.gradle.kts```**及**```settings.gradle.kts```**上面，Gradle會參照**```build.gradle.kts```**
+裡的描述來建構專案，而會將**```settings.gradle.kts```**裡的設定引入**```build.gradle.kts```**之中。
 
-ps: Maven可用的完整指令 
+ps: Maven可用的完整指令
 
 ```
 mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart
@@ -118,11 +122,13 @@ application {
 ```
 
 ### 1. plugin: id 'java'
+
 Gradle透過各種Plugin，來支援各種不同類型的程式語言建構工作，所以當看到**```plugins { id 'java'}```**時，可以知道，這個Project是一個Java Project.
 
 目前直接支援的程式語言有```java```、```groovy```、```scala```、```antlr```。
 
-Gradle的Plugin也像Maven一樣有分build或report類型，但表示法比較簡單，以Maven來說需要設定```<build><plugins></plugins></build>``` 、 ```<reporting><plugins></plugins></reporting>```兩處的plugin，Gradle就統一只用```plugins```即可
+Gradle的Plugin也像Maven一樣有分build或report類型，但表示法比較簡單，以Maven來說需要設定```<build><plugins></plugins></build>```
+、 ```<reporting><plugins></plugins></reporting>```兩處的plugin，Gradle就統一只用```plugins```即可
 
 reference : [Standard Gradle plugins](https://docs.gradle.org/current/userguide/standard_plugins.html)
 
@@ -138,7 +144,6 @@ google() | Goole Maven Repository
 mavenLocal() | Local 端的Maven Repositoy
 
 其他ivy或自建的就先不提了。
-
 
 ### 3. dependencies
 
@@ -193,13 +198,21 @@ sourceSets {
 }
 ```
 
-可用的```sourceSets```可以參考[Java Project Layout](https://docs.gradle.org/current/userguide/java_plugin.html#sec:java_project_layout)，注意的是，這是```java project```的layout.
+可用的```sourceSets```
+可以參考[Java Project Layout](https://docs.gradle.org/current/userguide/java_plugin.html#sec:java_project_layout)，注意的是，這是```java
+project```的layout.
 
 ### 5. build
 
-Maven是依據著Lifecycle跟Phase，還有pom.xml中設定的```package```類型來做建構，有哪些Lifecycle可參考[Maven Lifecycles](http://maven.apache.org/ref/3.5.0/maven-core/lifecycles.html)及[Maven Package Binding](http://maven.apache.org/ref/3.5.0/maven-core/default-bindings.html)，實際執行上比較大的影響是```package```類型，無論是```jar```、```war```還是```ear```，要完整建構的話可以只要下```mvn package```即可。。
+Maven是依據著Lifecycle跟Phase，還有pom.xml中設定的```package```
+類型來做建構，有哪些Lifecycle可參考[Maven Lifecycles](http://maven.apache.org/ref/3.5.0/maven-core/lifecycles.html)及[Maven Package
+Binding](http://maven.apache.org/ref/3.5.0/maven-core/default-bindings.html)，實際執行上比較大的影響是```package```類型，無論是```jar```、```war```還是```ear```，要完整建構的話可以只要下```mvn
+package```即可。。
 
-而Gradle也有Lifecycle，但Gradle實際執行的是所謂的```task```，會依據```apply plugin```而改變，所以要如何來build，是要參考plugin裡的說明，例如[Gradle Java Plugin](https://docs.gradle.org/current/userguide/java_plugin.html)裡，就會有註明相關的lifecycle task有哪些，像是有```build ```、```test```、```jar```等，所以```jar```、```war```或是```ear```，要建構可能會有區分，實際上全部用```gradle build```基本上也沒問題。
+而Gradle也有Lifecycle，但Gradle實際執行的是所謂的```task```，會依據```apply plugin```
+而改變，所以要如何來build，是要參考plugin裡的說明，例如[Gradle Java Plugin](https://docs.gradle.org/current/userguide/java_plugin.html)裡，就會有註明相關的lifecycle
+task有哪些，像是有```build ```、```test```、```jar```等，所以```jar```、```war```或是```ear```，要建構可能會有區分，實際上全部用```gradle build```
+基本上也沒問題。
 
 比較快的方式是執行***```gradle tasks --all```***，可以馬上看到現有可執行的tasks
 
@@ -255,7 +268,6 @@ test - Runs the unit tests.
 BUILD SUCCESSFUL in 0s
 ```
 
-
 至於想瞭解Maven有哪些phase可用，可以執行***```mvn help:describe -Dcmd=install```***
 
 ```
@@ -287,6 +299,6 @@ It is a part of the lifecycle for the POM packaging 'jar'. This lifecycle includ
 * deploy: org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy
 ```
 
- ## Reference
- 
- [4.6 中文版使用指南](https://doc.yonyoucloud.com/doc/wiki/project/GradleUserGuide-Wiki/index.html)
+## Reference
+
+[4.6 中文版使用指南](https://doc.yonyoucloud.com/doc/wiki/project/GradleUserGuide-Wiki/index.html)
